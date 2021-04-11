@@ -1,0 +1,175 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ----- GENERALES ----- */
+
+* {
+    font-family: "Roboto Mono", monospace;
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------MAIN */
+
+.totalWrapper {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -------------------------------------------------HEADERS */
+
+.header {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mainTitle {
+    line-height: 1.4;
+    font-size: 2rem;
+    margin-bottom: 2%;
+}
+
+.searcher, .logs {
+    display: flex;
+    width: 80%;
+    align-items: center;
+}
+
+.enterBTN { 
+    margin: 2% 0 2% 0;
+    width: 49%;
+    min-width: min-content;
+    padding: 2%;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+
+.enterBTN:hover {
+    background: #3f3f3f;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.input {
+    width: 100%;
+    line-height: 1.5;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 15px -10px black;
+    padding: 1%;
+}
+
+.input:focus {
+    outline: none;
+}
+
+/* -------------------------------------------------LOG / SIGN */
+
+main.mainLog {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 93%;
+    max-width: 500px;
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3%;
+    padding: 5%;
+    background-color: whitesmoke;
+    border-radius: 14px;
+    box-shadow: 0px 0px 15px -10px black;
+}
+
+form>div {
+    width: 100%;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2.title {
+    font-size: 4.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: darkslategray;
+}
+
+.btnBig {
+    padding: 5%;
+    background-color: darkslategray;
+    color: antiquewhite;
+}
+
+.notBtn {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-top: -4%;
+}
+
+.dissap {
+    display:none;
+}
