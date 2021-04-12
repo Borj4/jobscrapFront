@@ -6,7 +6,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-div.wellcome{
+div.welcome{
     /* position: relative; */
     display: flex;
     flex-flow: column;
