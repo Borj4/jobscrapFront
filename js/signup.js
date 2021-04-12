@@ -45,6 +45,8 @@ function goBack() {
     .catch(err => console.log("Internal server error. Sorry ;(", err))
 };
 
+// --------------------------------------------FORGOT
+
 document.querySelector("forgotBtn")
     .addEventListener("click", () => forgot())
     

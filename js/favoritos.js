@@ -58,10 +58,10 @@ function printData(element) {
         footerOfert.setAttribute("class", "footer-ofert")
         card.appendChild(footerOfert);
 
-        let remuneración = document.createElement("h4")
-        remuneración.setAttribute("id", "father").setAttribute("class","salary")
-        remuneración.innerText = element.remuneracion
-        footerOfert.appendChild(remuneración)
+        let remuneracion = document.createElement("h4")
+        remuneracion.setAttribute("id", "father").setAttribute("class","remuneracion")
+        remuneracion.innerText = element.remuneracion
+        footerOfert.appendChild(remuneracion)
 
         let favBtn = document.createElement("button")
         favBtn.setAttribute("class","enterBTN")
@@ -70,7 +70,7 @@ function printData(element) {
             deleteFav(element.id)
         })        
         let estrella = document.createElement("img")
-        estrella.setAttribute("src", "img/estrella.svg").setAttribute("class","searchBTN");
+        estrella.setAttribute("src", "img/estrella.svg").setAttribute("class","estrella");
         favBtn.appendChild(estrella)
 }
 

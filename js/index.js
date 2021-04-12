@@ -3,7 +3,7 @@ const SEARCHbtn = document.querySelector('#searchBTN')
 
 // ---------------------------------LOGIN REDIRECT
 
-document.querySelector("#logInBtn")
+document.querySelector("#loginBtn")
 .addEventListener("click", getLogin)
 
 function getLogin() {
@@ -25,7 +25,7 @@ function getSignup() {
 
 // ---------------------------------FAVS REDIRECT
 
-document.querySelector("#favs")
+document.querySelector("#favsBtn")
     .addEventListener("click", getFavs)
 
 function getFavs() {
