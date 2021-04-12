@@ -1,9 +1,9 @@
-const INPUTmail = document.querySelector("#email")
-const INPUTpass = document.querySelector("#password")
+const INPUTmail = document.querySelector("#inputEmail")
+const INPUTpass = document.querySelector("#inpuPass")
 
 // ---------------------------------------------SIGN UP  
 
-document.querySelector("#log")
+document.querySelector("#loginBtn")
     .addEventListener("click", () => login() )
     
 function login() {
@@ -36,11 +36,20 @@ function login() {
 
 // ---------------------------------------------VOLVER
 
-document.querySelector("#back")
+document.querySelector("#goBackBtn")
     .addEventListener("click", () => goBack())
     
 function goBack() {
     fetch("/")
     .then(res => window.location.href = res.url)
     .catch(err => console.log("Internal server error. Sorry :(", err))
-}
+};
+
+document.querySelector("forgotBtn")
+    .addEventListener("click", () => forgot())
+    
+function forgot() {
+    fetch("/recuperar")
+    .then(res => window.location.href = res.url)
+    .catch(err => console.log("Internal server error. Sorry :(", err))
+};
