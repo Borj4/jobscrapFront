@@ -5,35 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>SING UP</title>
 </head>
 <body>
     <main class="mainLog">
-        <form>
+        <form class="form">
         <div>
-            <h3 class="title">Registrar usuario</h3>
+            <button type="button" id="back" class="basicBtn">Volver</button>
         </div>
         <div>
-            <input type="name" class="input" required name="name" id="name" placeholder="Escribe tu Nombre"/>
+            <h2 class="textLog">Nuevo usuario</h2>
         </div>
-        <div>
+        <div class="write">
+            <input type="name" class="input" required name="name" id="name" placeholder="Escribe tu nombre"/>
+        </div>
+        <div class="write">
             <input type="email" class="input" required name="email" id="email" placeholder="Escribe tu email"/>
         </div>
-        <div>
+        <div class="write">
             <input type="password" class="input" required name="password" id="password" placeholder="Escribe tu contraseña"/>
         </div>
-        <!-- <div>
-            <button type="button" id="back" class="notBtn">Olvidé mi contraseña</button>
-        </div> -->
-        <div>
-            <button type="button" id="log" class="btnBig">Continuar</button>
-        </div>
-        <div>
-            <button type="button" id="back" class="notBtn">Volver</button>
+        <div class="btn">
+            <button type="button" id="log" class="basicBtn">Continuar</button>
         </div>
         </form>
     </main>
-    <script src="js/login.js"></script>
+    <script src="js/signUp.js"></script>
 </body>
 </html>

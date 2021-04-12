@@ -6,7 +6,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-div.wellcome{
+div.welcome{
     /* position: relative; */
     display: flex;
     flex-flow: column;
@@ -17,12 +17,11 @@ header{
     justify-content: space-between;
     position: fixed;
     width: 100%;
-    background-color: #FFFFFF;
     z-index: 10;
     margin-top: 0px;
 }
 h1{
-    font-size: 2.0rem;
+    font-size: 2.3rem;
     margin-left: 15px;
     margin-top: 18px;
     margin-bottom: 10px;
@@ -32,82 +31,62 @@ h1{
     padding: 0px;
     border: none;
     margin-right: 15px;
-    margin-top: 18px;
+    margin-top: 24px;
     margin-bottom: 10px;
 }
-
 .navbar {
     display: flex;
     flex-direction: column;
 }
-
 .navbar label {
     text-align: right;
 }
-
 .menu {
     display: none;
+    animation: deslizamiento 1.0s;
 }
-
 #menuboton:checked ~ .menu {
     display: block;
+    width: 100%;
 }
-
 #menuboton {
     display: none;
 }
 ul{
-    /* margin-top: 34px; */
-}
+    height: 50px;
+    margin: 0px;}
 ul li{
     display: inline-flex;
     background-color: #476EB4;
     width: 100%;
-    padding: 0px 10px;
-    margin: 1px 0px;
+    height: 40px;
+    padding: 0px 15px;
+    border: 2px solid white;
 }
-a{
-    text-decoration: none;
-    color: #476EB4;
+.menuBtn{
     padding: 8px 0px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.0rem;
+    color: white;
+    outline: none;
 }
-a:hover {
-    color: #67dd38;
+.menuBtn:hover, .menuBTN:active{
+    color: #7f97c5;
     font-weight: bold;
 }
-.porfolio:hover ul{
-    display: block;
-    position: absolute;
-    opacity: 1;
+@keyframes deslizamiento {
+    0%{
+        transform: translateY(-50%);
+        color: transparent;
+    }
+    100%{
+        transform: translateY(0%)
+    }
 }
-ul li ul {
-    display: none;
-    position: relative;
-    margin-left: -40px;
-    margin-top: 30px;
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .buscador{
     width: 100%;
-    background-color: #FFF;
+    background-color: #FFFFFF;
     z-index: 9;
     display: flex;
     flex-flow: column;
@@ -122,7 +101,6 @@ h2{
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
-    background-color: #FFF;
 }
 .searcher{
     display: flex;
@@ -145,17 +123,20 @@ h2{
 .input:focus {
     outline: none;
 }
-.enterBTN{
+.enterBTN, .enterBTN:active{
     border: none;
     background-color: transparent;
+}
+.enterBTN:hover{
+    transform: scale(1.2);
+}
+.enterBTN:focus {
+    outline: none;
 }
 .lupa{
     width: 25px;
     padding: 0px;
     border: none;
-}
-.enterBTN:focus {
-    outline: none;
 }
 .image{
     width: 90%;
@@ -196,4 +177,65 @@ h2{
     width: 25px;
     padding: 0px;
     border: none;
+}
+.mainLog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form{
+    background-color: #476EB4;
+    width: 95%;
+    margin-top: 50px;
+    border-radius: 3px;
+    align-items: center;
+    padding-bottom: 50px;
+}
+.textLog{
+    color: white;
+    margin-top: 55px;
+}
+.write{
+    display: flex;
+    justify-content: center;
+    background-color: #F0F0F0;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 15px 2%;
+}
+div.btn{
+    display: flex;
+    justify-content: center;
+}
+.basicBtn{
+    display: flex;
+    justify-content: center;
+    background-color: #F0F0F0;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 15px 2%;
+    border: none;
+    font-size: 1.0rem;
+    color: #476EB4;
+    font-weight: 600;
+    outline: none;
+}
+.basicBtn:hover, .notBtn:hover{
+    transform: scale(0.95);
+}
+div.notBtn{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+}
+.notBtn{
+    color: white;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    font-size: 1.0rem;
+}
+#back{
+    outline: none;
 }
