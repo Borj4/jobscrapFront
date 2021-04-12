@@ -1,0 +1,118 @@
+body{
+    padding: 0%;
+    margin:0 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+div.wellcome{
+    /* position: relative; */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background-color: #FFFFFF;
+    z-index: 10;
+    margin-top: 0px;
+}
+h1{
+    font-size: 2.0rem;
+    margin-left: 15px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+.buscador{
+    width: 100%;
+    background-color: #FFF;
+    z-index: 9;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+h2{
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #476EB4;
+    margin-top: 85px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #FFF;
+}
+.searcher{
+    display: flex;
+    align-items: center;
+    width: 85%;
+    justify-content: center;
+    background-color: #F9F9F9;
+    border-radius: 15px;
+    padding: 10px;
+}
+.input{
+    font-size: 1.0rem;
+    padding: 0.2em;
+    display: flex;
+    justify-content: space-between;
+    border: 0px;
+    background-color: transparent;
+    width: 90%;
+    padding-right: 10%;
+}
+.input:focus {
+    outline: none;
+}
+.enterBTN{
+    border: none;
+    background-color: transparent;
+}
+.lupa{
+    width: 25px;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+}
+.enterBTN:focus {
+    outline: none;
+}
+.image{
+    width: 90%;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+.ofert{
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+    padding: 20px;
+    margin: 10px 8px;
+}
+.title{
+    margin-top: 0px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #476EB4;
+    line-height: 1.2rem;
+}
+.text{
+    font-size: 1.0rem;
+    line-height: 1.4rem;
+}
+.footer-ofert{
+    display: flex;
+    align-items: center;
+}
+
+.salary{
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}

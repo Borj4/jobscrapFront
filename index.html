@@ -4,26 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FYF</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="totalWrapper">
-        <header class="header">
-            <h1 class="mainTitle">JOBSCRAP</h1>
+    <header>
+        <h1>[WebWork]</h1>
+    </header>
+    <div class="wellcome">
+        <h2>La platafroma de los desarrolladores web freelancer. Elige tu trabajo, gestiona tu tiempo.</h2>
+        <img src="img/portada.jpg" class="image" alt="">
+        <div class="buscador">
             <div class="searcher">
-                <input type="text" class="input" required name="search" id="input" placeholder="Busca"/>
-                <button type="button" class="enterBTN" id="searchBTN">Busca</button>
+                <input type="text" class="input" required name="search" id="input" placeholder="Buscar"/>
+                <button type="button" class="enterBTN" id="searchBTN"> <img src="img/lupa.svg" class="lupa" alt=""></button>
             </div>
-            <div class="logs">
-                <button type="button" class="enterBTN" id="logBTN" >Login</button>
-                <button type="button" class="enterBTN" id="signBTN" >Registro</button>
-            </div>
-        </header>
-        <main class="main" id="main">
-        </main>
+        </div>
     </div>
-    <script src="js/index.js"></script>
+
+    <div class="container" id="father">
+        <div class="ofert">
+            <h3 class="title">Front End Developer en Madrid para trabajar a destajo</h3>
+            <p class="text">Buscamos un desarrollador front-end capaz de interpretar y transformar los diseños visuales en componentes / plantillas / paginas / estilos u otras tecnologías web asociadas. Su enfoque principal será el desarrollo de aplicaciones / módulos web que permitan la explotación y gestión de datos suministrados por el backend y garantizar el rendimiento para mantener una experiencia de usuario fluida. Será responsable de integrar sus desarrollos con el backend del sistema, por lo tanto, se valorará conocimientos básicos de tecnologías backend.?</p>
+            <div class="footer-ofert">
+                <h4 class="salary">USD 50 - 100</h4>
+                <button type="button" class="enterBTN" id="searchBTN">  <img src="img/estrella.svg" class="lupa" alt=""></button>
+            </div>
+        </div>
+        <div class="ofert">
+            <h3 class="title">Front End Developer en Madrid</h3>
+            <p class="text">Buscamos un desarrollador front-end capaz de interpretar y transformar los diseños visuales en componentes / plantillas / paginas / estilos u otras tecnologías web asociadas. Su enfoque principal será el desarrollo de aplicaciones / módulos web que permitan la explotación y gestión de datos suministrados por el backend y garantizar el rendimiento para mantener una experiencia de usuario fluida. Será responsable de integrar sus desarrollos con el backend del sistema, por lo tanto, se valorará conocimientos básicos de tecnologías backend.?</p>
+            <h4 class="salary">USD 50 - 100</h4>
+        </div>
+
+
+        
+    </div>
 </body>
 </html>
