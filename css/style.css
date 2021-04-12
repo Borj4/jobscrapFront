@@ -27,6 +27,84 @@ h1{
     margin-top: 18px;
     margin-bottom: 10px;
 }
+.logado{
+    width: 32px;
+    padding: 0px;
+    border: none;
+    margin-right: 15px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar label {
+    text-align: right;
+}
+
+.menu {
+    display: none;
+}
+
+#menuboton:checked ~ .menu {
+    display: block;
+}
+
+#menuboton {
+    display: none;
+}
+ul{
+    /* margin-top: 34px; */
+}
+ul li{
+    display: inline-flex;
+    background-color: #476EB4;
+    width: 100%;
+    padding: 0px 10px;
+    margin: 1px 0px;
+}
+a{
+    text-decoration: none;
+    color: #476EB4;
+    padding: 8px 0px;
+}
+a:hover {
+    color: #67dd38;
+    font-weight: bold;
+}
+.porfolio:hover ul{
+    display: block;
+    position: absolute;
+    opacity: 1;
+}
+ul li ul {
+    display: none;
+    position: relative;
+    margin-left: -40px;
+    margin-top: 30px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .buscador{
     width: 100%;
     background-color: #FFF;
@@ -34,6 +112,7 @@ h1{
     display: flex;
     flex-flow: column;
     justify-content: center;
+    margin-top: 15px;
 }
 h2{
     font-weight: 600;
@@ -47,12 +126,11 @@ h2{
 }
 .searcher{
     display: flex;
-    align-items: center;
-    width: 85%;
     justify-content: center;
-    background-color: #F9F9F9;
+    background-color: #F0F0F0;
     border-radius: 15px;
     padding: 10px;
+    margin: 0 2%;
 }
 .input{
     font-size: 1.0rem;
@@ -93,14 +171,14 @@ h2{
     padding: 20px;
     margin: 10px 8px;
 }
-.title{
+.titulo{
     margin-top: 0px;
     font-size: 1.2rem;
     text-transform: uppercase;
     color: #476EB4;
     line-height: 1.2rem;
 }
-.text{
+.decripcion{
     font-size: 1.0rem;
     line-height: 1.4rem;
 }
@@ -108,7 +186,7 @@ h2{
     display: flex;
     align-items: center;
 }
-.salary{
+.remuneracion{
     margin: 0px;
     display: flex;
     justify-content: space-between;
