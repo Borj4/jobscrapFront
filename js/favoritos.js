@@ -38,30 +38,35 @@ showFavs()
 
 function printData(element) {
         // Creación de tarjeta en la que se almacenará cada oferta.
+
+        console.log(element);
         let card = document.createElement("div")
         card.setAttribute("class", "ofert")
-        container.appendChild(card)
+        document.querySelector('#father').appendChild(card)
 
         // Título de la oferta
         let title = document.createElement("a")
-        title.setAttribute("class", "title").setAttribute("href",element.enlace).setAttribute("target", "_blank")
+        title.setAttribute("class", "title")
+        title.setAttribute("href", element.enlace)
+        title.setAttribute("target", "_blank")
         title.innerText = element.titulo;
         card.appendChild(title)
+
         //  Descripción
         let description = document.createElement("p")
-        title.setAttribute("class", "text");
+        description.setAttribute("class", "text");
         description.innerText = element.descripcion;
         card.appendChild(description)
 
-        // SubContenedor
+        // // SubContenedor
         let footerOfert = document.createElement("div")
         footerOfert.setAttribute("class", "footer-ofert")
         card.appendChild(footerOfert);
 
-        let remuneracion = document.createElement("h4")
-        remuneracion.setAttribute("id", "father").setAttribute("class","remuneracion")
-        remuneracion.innerText = element.remuneracion
-        footerOfert.appendChild(remuneracion)
+        let money = document.createElement("h4")
+        money.setAttribute("class","remuneracion")
+        money.innerText = element.remuneracion
+        footerOfert.appendChild(money)
 
         let favBtn = document.createElement("button")
         favBtn.setAttribute("class","enterBTN")
@@ -69,9 +74,10 @@ function printData(element) {
         favBtn.addEventListener("click", () => {
             deleteFav(element.id)
         })        
-        let estrella = document.createElement("img")
-        estrella.setAttribute("src", "img/estrella.svg").setAttribute("class","estrella");
-        favBtn.appendChild(estrella)
+        let star = document.createElement("img")
+        star.setAttribute("src", "img/estrella.svg")
+        star.setAttribute("class","estrella")
+        favBtn.appendChild(star)
 }
 
 function deleteFav(favId) {
@@ -114,6 +120,7 @@ function logout() {
     .then(data => {
         if (data.status == 200){
             alert(data.data)
+            sessionStorage.removeItem('token')
             setTimeout(window.location.href = data.url, 1500)
         }
         if (data.status == 500){
