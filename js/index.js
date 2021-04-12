@@ -3,7 +3,7 @@ const SEARCHbtn = document.querySelector('#searchBTN')
 
 // ---------------------------------LOGIN REDIRECT
 
-document.querySelector("#logBTN")
+document.querySelector("#login")
 .addEventListener("click", getLogin)
 
 function getLogin() {
@@ -14,11 +14,22 @@ function getLogin() {
 
 // ---------------------------------SIGNUP REDIRECT
 
-document.querySelector("#signBTN")
+document.querySelector("#signup")
     .addEventListener("click", getSignup)
 
 function getSignup() {
     fetch("/signup")
+    .then(res => window.location.href = res.url)
+    .catch(err => console.log("Internal server error. Sorry :(", err))
+}
+
+// ---------------------------------FAVS REDIRECT
+
+document.querySelector("#favs")
+    .addEventListener("click", getFavs)
+
+function getFavs() {
+    fetch("/favoritos")
     .then(res => window.location.href = res.url)
     .catch(err => console.log("Internal server error. Sorry :(", err))
 }
@@ -103,8 +114,7 @@ function printData(element) {
         footerOfert.appendChild(remuneración)
 
         let favBtn = document.createElement("button")
-        // favBtn.innerText = "Favoritos"
-        favBtn.setAttribute("id", "searchBTN").setAttribute("class","enterBTN")
+        favBtn.setAttribute("class","enterBTN")
         footerOfert.appendChild(favBtn)
         favBtn.addEventListener("click", () => {
             setFav(element)
