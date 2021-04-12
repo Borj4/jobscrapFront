@@ -3,7 +3,7 @@ const SEARCHbtn = document.querySelector('#searchBTN')
 
 // ---------------------------------LOGIN REDIRECT
 
-document.querySelector("#logBTN")
+document.querySelector("#login")
 .addEventListener("click", getLogin)
 
 function getLogin() {
@@ -14,11 +14,22 @@ function getLogin() {
 
 // ---------------------------------SIGNUP REDIRECT
 
-document.querySelector("#signBTN")
+document.querySelector("#signup")
     .addEventListener("click", getSignup)
 
 function getSignup() {
     fetch("/signup")
+    .then(res => window.location.href = res.url)
+    .catch(err => console.log("Internal server error. Sorry :(", err))
+}
+
+// ---------------------------------FAVS REDIRECT
+
+document.querySelector("#favs")
+    .addEventListener("click", getFavs)
+
+function getFavs() {
+    fetch("/favoritos")
     .then(res => window.location.href = res.url)
     .catch(err => console.log("Internal server error. Sorry :(", err))
 }
@@ -76,38 +87,41 @@ SEARCHbtn.addEventListener("click", () => {
 })
 
 function printData(element) {
-    let card = document.createElement("div")
-    card.setAttribute("class", "card")
-    document.querySelector(".main")
-    .appendChild(card)
-        
-    let title = document.createElement("h3")
-    title.innerText = element.title
-    card.appendChild(title)
-    
-    let description = document.createElement("p")
-    description.innerText = element.description
-    card.appendChild(description)
-    
-    let minicard = document.createElement("div")
-    // minicard.setAttribute("class", "minicard")
-    card.appendChild(minicard)
+        // Creación de tarjeta en la que se almacenará cada oferta.
+        let card = document.createElement("div")
+        card.setAttribute("class", "ofert")
+        container.appendChild(card)
 
-    let money = document.createElement("h4")
-    money.innerText = element.money
-    minicard.appendChild(money)
+        // Título de la oferta
+        let title = document.createElement("a")
+        title.setAttribute("class", "title").setAttribute("href",element.enlace).setAttribute("target", "_blank")
+        title.innerText = element.titulo;
+        card.appendChild(title)
+        //  Descripción
+        let description = document.createElement("p")
+        title.setAttribute("class", "text");
+        description.innerText = element.descripcion;
+        card.appendChild(description)
 
-    let points = document.createElement("h4")
-    points.innerText = element.points
-    minicard.appendChild(points)
-    
-    
-    let favBtn = document.createElement("button")
-    favBtn.innerText = "Favoritos"
-    minicard.appendChild(favBtn)
-    favBtn.addEventListener("click", () => {
-        setFav(element)
-    })
+        // SubContenedor
+        let footerOfert = document.createElement("div")
+        footerOfert.setAttribute("class", "foorter-ofert")
+        card.appendChild(footerOfert);
+
+        let remuneración = document.createElement("h4")
+        remuneración.setAttribute("id", "father").setAttribute("class","salary")
+        remuneración.innerText = element.remuneracion
+        footerOfert.appendChild(remuneración)
+
+        let favBtn = document.createElement("button")
+        favBtn.setAttribute("class","enterBTN")
+        footerOfert.appendChild(favBtn)
+        favBtn.addEventListener("click", () => {
+            setFav(element)
+        })        
+        let estrella = document.createElement("img")
+        estrella.setAttribute("src", "img/estrella.svg").setAttribute("class","searchBTN");
+        favBtn.appendChild(estrella)
 }
 
 function setFav(favInfo) {

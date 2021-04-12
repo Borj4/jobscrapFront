@@ -3,13 +3,13 @@ const INPUTpass = document.querySelector("#inpuPass")
 
 // ---------------------------------------------SIGN UP  
 
-document.querySelector("#loginBtn")
+document.querySelector("#signUpBtn")
     .addEventListener("click", () => login() )
     
 function login() {
-    fetch("http://localhost:8080/login", {
+    fetch("http://localhost:8080/signup", {
         method: 'POST',
-        body: JSON.stringify( {email: INPUTmail.value, pass: INPUTpass.value} ),
+        body: JSON.stringify( {name: inputName.value, email: inputEmail.value, pass: inputPass.value} ),
         headers: {
             'Content-Type': 'application/json',
         }
@@ -17,7 +17,7 @@ function login() {
     .then(res => res.json())
     .then(data => {
         if (data.status == 200){
-            alert("Datos correctos. Entrando en área administrador")
+            alert("Datos correctos. Bienvenido")
             sessionStorage.setItem("token", data.token)
             setTimeout(window.location.href = data.url, 1500)
         }
@@ -42,7 +42,7 @@ document.querySelector("#goBackBtn")
 function goBack() {
     fetch("/")
     .then(res => window.location.href = res.url)
-    .catch(err => console.log("Internal server error. Sorry :(", err))
+    .catch(err => console.log("Internal server error. Sorry ;(", err))
 };
 
 document.querySelector("forgotBtn")
@@ -51,5 +51,5 @@ document.querySelector("forgotBtn")
 function forgot() {
     fetch("/recuperar")
     .then(res => window.location.href = res.url)
-    .catch(err => console.log("Internal server error. Sorry :(", err))
+    .catch(err => console.log("Internal server error. Sorry ;(", err))
 };
