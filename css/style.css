@@ -75,7 +75,6 @@ h2{
     width: 25px;
     padding: 0px;
     border: none;
-    background-color: transparent;
 }
 .enterBTN:focus {
     outline: none;
@@ -109,10 +108,14 @@ h2{
     display: flex;
     align-items: center;
 }
-
 .salary{
     margin: 0px;
     display: flex;
     justify-content: space-between;
     width: 90%;
+}
+.estrella{
+    width: 25px;
+    padding: 0px;
+    border: none;
 }
