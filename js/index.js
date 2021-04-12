@@ -3,7 +3,7 @@ const SEARCHbtn = document.querySelector('#searchBTN')
 
 // ---------------------------------LOGIN REDIRECT
 
-document.querySelector("#login")
+document.querySelector("#logInBtn")
 .addEventListener("click", getLogin)
 
 function getLogin() {
@@ -14,7 +14,7 @@ function getLogin() {
 
 // ---------------------------------SIGNUP REDIRECT
 
-document.querySelector("#signup")
+document.querySelector("#signUpBtn")
     .addEventListener("click", getSignup)
 
 function getSignup() {
@@ -38,46 +38,40 @@ function getFavs() {
 
 SEARCHbtn.addEventListener("click", () => {
     if ( sessionStorage.getItem('token') ){
-        fetch("http://localhost:8080/search", {
+        fetch(`http://localhost:8080/search/${INPUT.value}`, {
             headers: {
                 'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify({search: INPUT.value})
+            }
         })
         .then(res => res.json())
         .then(data => {
             if (data.status == 200){
                 data.data.map(el => printData(el))
             }
-            if (data.status == 401){
-                alert(data.data)
+            if (data.status == 400){
                 setTimeout(window.location.href = data.url, 1500)
             }
-            if (data.status == 500){
+            if (data.status == 403){
                 alert(data.data)
             }
         })
         .catch(err => console.log("Internal server error. Sorry :(", err))
     } else {
-        fetch("http://localhost:8080/search", {
+        fetch(`http://localhost:8080/search/${INPUT.value}`, {
             headers: {
                 'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify({search: INPUT.value})
+            }
         })
         .then(res => res.json())
         .then(data => {
             if (data.status == 200){
                 data.data.map(el => printData(el))
             }
-            if (data.status == 401){
-                alert(data.data)
+            if (data.status == 400){
                 setTimeout(window.location.href = data.url, 1500)
             }
-            if (data.status == 500){
+            if (data.status == 403){
                 alert(data.data)
             }
         })
@@ -105,7 +99,7 @@ function printData(element) {
 
         // SubContenedor
         let footerOfert = document.createElement("div")
-        footerOfert.setAttribute("class", "foorter-ofert")
+        footerOfert.setAttribute("class", "footer-ofert")
         card.appendChild(footerOfert);
 
         let remuneración = document.createElement("h4")
