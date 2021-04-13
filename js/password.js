@@ -1,10 +1,7 @@
-const INPUTpass = document.querySelector("#inputPass")
-
 // ---------------------------------------------REESTABLECER
 
 const Url = new URLSearchParams(window.location.search)
 const token = Url.get('tok')
-console.log(token)
 
 function reestablecer(){
     fetch(`http://localhost:8080/reestablecer/${token}`, {
@@ -16,16 +13,16 @@ function reestablecer(){
     .then(res => res.json())
     .then(data => {
         if (data.status == 200){
-            alert(data.data)
+            alert(data.msg)
             printDynamics(data.userMail, data.id, data.nombre, data.secret)
         }
 
         if (data.status == 500){
-            alert(data.data)
+            alert(data.msg)
             setTimeout(window.location.href = data.url, 1500)
         }
     })
-    .catch(err => console.log("Internal server error. Sorry :(", err)).addEventListener("click", () => login() )
+    .catch(err => console.log("Internal server error. Sorry :(", err))
 }
 
 reestablecer()
@@ -36,21 +33,26 @@ function printDynamics (mail, id, nombre = usuario, secret){
 
     let cardMensaje = document.createElement("div")
     let mensaje = document.createElement("h2")
-    mensaje.setAttribute("class", "textlog")
-    mensaje.innerText=`Hola, ${nombre}, escribe tu nueva contraseña`
+    mensaje.setAttribute("class", "textLog")
+    mensaje.innerText = `¡Hola, ${nombre}! Escribe tu nueva contraseña.`
     cardMensaje.appendChild(mensaje)
     document.querySelector("#container").appendChild(cardMensaje);
 
     let cardInput  = document.createElement("div")
+    cardInput.setAttribute("class","write")
     let input = document.createElement("input")
     input.setAttribute("placeholder","Escribe aquí tu contraseña.")
-    input.setAttribute("class","input").setAttribute("required")
+    input.setAttribute("class","input")
+    input.setAttribute("type","password")
+    // input.setAttribute("required")
     cardInput.appendChild(input);
     document.querySelector("#container").appendChild(cardInput);
-
+    
     let cardBoton  = document.createElement("div")
+    cardBoton.setAttribute("class","btn")
     let boton = document.createElement("button")
     boton.innerText= "Enviar";
+    boton.setAttribute("type","button")
     boton.setAttribute("class","basicBtn")
     cardBoton.appendChild(boton);
     document.querySelector("#container").appendChild(cardBoton);
@@ -60,12 +62,10 @@ function printDynamics (mail, id, nombre = usuario, secret){
     })
 }
 
-// ---------------------------------------------SIGN UP  
-
-INPUTpass.addEventListener("click", () => resetPass() )
+// ---------------------------------------------NEW PASS 
     
 function resetPass(pass, mail, id, secret) {
-    fetch("http://localhost:8080/newPass", {
+fetch("http://localhost:8080/newPass", {
         method: 'PUT',
         body: JSON.stringify( {pass: pass, email: mail, id: id, secret: secret} ),
         headers: {
@@ -75,18 +75,18 @@ function resetPass(pass, mail, id, secret) {
     .then(res => res.json())
     .then(data => {
         if (data.status == 200){
-            alert("Datos correctos. Bienvenido")
+            alert("Contraseña cambiada correctamente. Bienvenido")
             sessionStorage.setItem("token", data.token)
-            setTimeout(window.location.href = data.url, 1500)
+            window.location.href = data.url
         }
         if (data.status == 400){
-            alert(data.data)
+            alert(data.msg)
         }
         if (data.status == 406){
-            alert(data.data)
+            alert(data.msg)
         }
         if (data.status == 500){
-            alert(data.data)
+            alert(data.msg)
         }
     })
     .catch(err => console.log("Internal server error. Sorry :(", err))
