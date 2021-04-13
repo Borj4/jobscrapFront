@@ -150,6 +150,35 @@ h2{
     justify-content: center;
     margin-top: 15px;
 }
+.thiefSpiner{
+    /* margin-top: 391px; */
+    position: fixed;
+    width: 100vw;
+    position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    position: fixed;
+
+}
+#thief{
+    width: 200px;
+    height: 200px;
+    margin-top: 390px;
+    animation: thief;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-play-state:  running;
+    /* display: none; */
+}
+@keyframes thief {
+    0% {transform: translateX(140%)rotateY(0deg)}
+    49% {transform: translateX(-140%)rotateY(0deg)}
+    50% {transform: translateX(-1400%)rotateY(180deg)}
+    99% {transform: translateX(140%)rotateY(180deg)}
+    100% {transform: translateX(140%)rotateY(0deg)} /*si bien va con display fixed y no debería dar guerra*/
+}
 .ofert{
     border-radius: 4px;
     background-color: #f0f0f0;
@@ -256,7 +285,7 @@ div.notBtn{
 
 @media screen and (min-width: 768px){
     div.welcome{
-        max-width: 900px;
+        max-width: 1200px;
     }
     header{
         max-width: 1300px;
@@ -266,5 +295,26 @@ div.notBtn{
     }
     .logado{
         width: 36px;
+    }
+    .portada{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 50px;
+    }
+    .image{
+        max-width: 50%;
+        margin-top: -15px;
+    }
+    .container{
+        max-width: 900px;
+    }
+    .buscador{
+        margin-top: -190px;
+    }
+    h2{
+        font-size: 2.0rem;
+        margin-top: 200px;
+        line-height: 2.0rem;
     }
 }
