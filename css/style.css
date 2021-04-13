@@ -208,8 +208,8 @@ h2{
     display: flex;
     justify-content: center;
     background-color: #F0F0F0;
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 30px;
+    padding: 6px 10px;
     margin: 15px 2%;
 }
 div.btn{
