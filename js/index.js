@@ -47,14 +47,13 @@ SEARCHbtn.addEventListener("click", () => {
         .then(res => res.json())
         .then(data => {
             if (data.status == 200){
-                console.log("DATA1", data.data);
                 data.data.map(el => printData(el))
             }
             if (data.status == 400){
-                setTimeout(window.location.href = data.url, 1500)
+                alert(data.msg)
             }
             if (data.status == 403){
-                alert(data.data)
+                alert(data.msg)
             }
         })
         .catch(err => console.log("Internal server error. Sorry :(", err))
@@ -67,14 +66,13 @@ SEARCHbtn.addEventListener("click", () => {
         .then(res => res.json())
         .then(data => {
             if (data.status == 200){
-                console.log("DATA", data);
                 data.data.map(el => printData(el))
             }
             if (data.status == 400){
-                setTimeout(window.location.href = data.url, 1500)
+                alert(data.msg)
             }
             if (data.status == 403){
-                alert(data.data)
+                alert(data.msg)
             }
         })
         .catch(err => console.log("Internal server error. Sorry :(", err))
@@ -84,15 +82,13 @@ SEARCHbtn.addEventListener("click", () => {
 
 function printData(element) {
         // Creación de tarjeta en la que se almacenará cada oferta.
-
-        console.log(element);
         let card = document.createElement("div")
         card.setAttribute("class", "ofert")
         document.querySelector('#father').appendChild(card)
 
         // Título de la oferta
         let title = document.createElement("a")
-        title.setAttribute("class", "title")
+        title.setAttribute("class", "titulo")
         title.setAttribute("href", element.enlace)
         title.setAttribute("target", "_blank")
         title.innerText = element.titulo;
@@ -100,7 +96,7 @@ function printData(element) {
 
         //  Descripción
         let description = document.createElement("p")
-        description.setAttribute("class", "text");
+        description.setAttribute("class", "descripcion");
         description.innerText = element.descripcion;
         card.appendChild(description)
 
@@ -127,5 +123,25 @@ function printData(element) {
 }
 
 function setFav(favInfo) {
-    console.log(favInfo);
+    fetch(`http://localhost:8080/newFav`, {
+        headers: {
+            'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({titulo: favInfo.titulo, descripcion: favInfo.descripcion, remuneracion: favInfo.remuneracion, enlace: favInfo.enlace})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status == 200){
+            alert(data.msg)
+        }
+        if (data.status == 400){
+            alert(data.msg)
+        }
+        if (data.status == 500){
+            alert(data.msg)
+        }
+    })
+    .catch(err => console.log("Internal server error. Sorry :(", err))
 }

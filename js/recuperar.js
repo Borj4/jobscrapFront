@@ -1,7 +1,19 @@
 const INPUTmail = document.querySelector("#inputEmail")
 const SENDbtn = document.querySelector("#sendBtn")
 
-SENDBtn.addEventListener("click", () => recuperar() )
+// ---------------------------------LOGIN REDIRECT
+
+document.querySelector("#goBackBtn")
+.addEventListener("click", goBack)
+
+function goBack() {
+    fetch("/login")
+    .then(res => window.location.href = res.url)
+    .catch(err => console.log("Internal server error. Sorry :(", err))
+}
+
+
+SENDbtn.addEventListener("click", () => recuperar() )
 
 function recuperar() {
     fetch("http://localhost:8080/recuperar", {
@@ -14,20 +26,17 @@ function recuperar() {
     .then(res => res.json())
     .then(data => {
         if (data.status == 200){
-            alert(data.data)
-            sessionStorage.setItem("token", data.token)
-            setTimeout(window.location.href = data.url, 1500)
+            alert(data.msg)
         }
         if (data.status == 400){
-            alert(data.data)
+            alert(data.msg)
         }
         if (data.status == 406){
-            alert(data.data)
+            alert(data.msg)
         }
         if (data.status == 500){
-            alert(data.data)
+            alert(data.msg)
         }
     })
     .catch(err => console.log("Internal server error. Sorry :(", err))
 }
-document.querySelector("#closeTab").addEventListener("click",()=>{close()})

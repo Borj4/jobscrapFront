@@ -40,15 +40,15 @@ function login() {
     .then(res => res.json())
     .then(data => {
         if (data.status == 200){
-            alert("Datos correctos. Entrando en área administrador")
+            alert(data.msg)
             sessionStorage.setItem("token", data.token)
             setTimeout(window.location.href = data.url, 1500)
         }
         if (data.status == 406){
-            alert(data.data)
+            alert(data.msg)
         }
         if (data.status == 500){
-            alert(data.data)
+            alert(data.msg)
         }
     })
     .catch(err => console.log("Internal server error. Sorry :(", err))
