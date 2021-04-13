@@ -52,7 +52,7 @@ SEARCHbtn.addEventListener("click", () => {
             if (data.status == 400){
                 alert(data.msg)
             }
-            if (data.status == 403){
+            if (data.status == 500){
                 alert(data.msg)
             }
         })
@@ -71,7 +71,7 @@ SEARCHbtn.addEventListener("click", () => {
             if (data.status == 400){
                 alert(data.msg)
             }
-            if (data.status == 403){
+            if (data.status == 500){
                 alert(data.msg)
             }
         })
@@ -109,6 +109,13 @@ function printData(element) {
         money.setAttribute("class","remuneracion")
         money.innerText = element.remuneracion
         footerOfert.appendChild(money)
+
+        if(element.fav){
+            let fv = document.createElement("p")
+            fv.setAttribute("class","remuneracion")
+            fv.innerText = element.fav
+            footerOfert.appendChild(fv)
+        }
 
         let favBtn = document.createElement("button")
         favBtn.setAttribute("class","enterBTN")
