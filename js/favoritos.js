@@ -78,7 +78,7 @@ function printData(element) {
         favBtn.setAttribute("class","enterBTN")
         footerOfert.appendChild(favBtn)
         favBtn.addEventListener("click", () => {
-            deleteFav(element.id)
+            deleteFav(element)
         })        
         let star = document.createElement("img")
         star.setAttribute("src", "img/estrella.svg")
@@ -91,9 +91,10 @@ function printData(element) {
 function deleteFav(favId) {
     fetch("http://localhost:8080/deleteFav", {
         method: 'DELETE',
-        body: JSON.stringify( { id: favId } ),
+        body: JSON.stringify( { elem: favId } ),
         headers: {
-            'Content-Type': "application/json"
+            'Content-Type': "application/json",
+            'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
         }
     })
     .then(res => res.json())

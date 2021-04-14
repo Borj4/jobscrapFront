@@ -34,9 +34,28 @@ function goToFavs() {
     .catch(err => console.log("Internal server error. Sorry :(", err))
 }
 
+// ------------------------------------THIEF
+
+function generateThief(){
+    let div = document.createElement("div")
+    div.setAttribute("class", "thiefSpiner")
+    div.setAttribute("id", "spiner")
+
+    let thief = document.createElement("img")
+    thief.setAttribute("src", "img/thief.png")
+    thief.setAttribute("id", "thief")
+    div.appendChild(thief)
+    document.querySelector('.welcome').appendChild(div)
+}
+
+function remover(){
+    document.querySelector('#spiner').remove()
+}
+
 // ---------------------------------SEARCH FETCH
 
 SEARCHbtn.addEventListener("click", () => {
+    generateThief()
     if ( sessionStorage.getItem('token') ){
         fetch(`http://localhost:8080/search/${INPUT.value}`, {
             headers: {
@@ -46,8 +65,9 @@ SEARCHbtn.addEventListener("click", () => {
         })
         .then(res => res.json())
         .then(data => {
+            remover()
             if (data.status == 200){
-                data.data.map(el => printData(el))
+                data.data.map(el => printDataLogged(el))
             }
             if (data.status == 400){
                 alert(data.msg)
@@ -65,8 +85,9 @@ SEARCHbtn.addEventListener("click", () => {
         })
         .then(res => res.json())
         .then(data => {
+            remover()
             if (data.status == 200){
-                data.data.map(el => printData(el))
+                data.data.map(el => printDataAnon(el))
             }
             if (data.status == 400){
                 alert(data.msg)
@@ -80,7 +101,7 @@ SEARCHbtn.addEventListener("click", () => {
     }
 })
 
-function printData(element) {
+function printDataLogged(element) {
         // Creación de tarjeta en la que se almacenará cada oferta.
         let card = document.createElement("div")
         card.setAttribute("class", "ofert")
@@ -111,23 +132,82 @@ function printData(element) {
         footerOfert.appendChild(money)
 
         if(element.fav){
-            let fv = document.createElement("p")
-            fv.setAttribute("class","remuneracion")
-            fv.innerText = element.fav
-            footerOfert.appendChild(fv)
+            let favBtn = document.createElement("button")
+            favBtn.setAttribute("class","enterBTN")
+            footerOfert.appendChild(favBtn)
+            favBtn.addEventListener("click", () => {
+                if (confirm("¿Seguro que quieres eliminar esta oferta guardada?")){
+                    star.setAttribute("src", "img/estrellaKo.svg")
+                    // element.fav = false
+                    deleteFav(element)    
+                }
+            })        
+            let star = document.createElement("img")
+            star.setAttribute("src", "img/estrella.svg")
+            star.setAttribute("class","estrella")
+            favBtn.appendChild(star)
+            
+        } else {
+            let favBtn = document.createElement("button")
+            favBtn.setAttribute("class","enterBTN")
+            footerOfert.appendChild(favBtn)
+            favBtn.addEventListener("click", () => {
+                star.setAttribute("src", "img/estrella.svg")
+                // element.fav = true
+                setFav(element)
+            })         
+            let star = document.createElement("img")
+            star.setAttribute("src", "img/estrellaKo.svg")
+            star.setAttribute("class","estrella")
+            favBtn.appendChild(star)
         }
+}
+
+function printDataAnon(element) {
+        // Creación de tarjeta en la que se almacenará cada oferta.
+        let card = document.createElement("div")
+        card.setAttribute("class", "ofert")
+        document.querySelector('#father').appendChild(card)
+
+        // Título de la oferta
+        let title = document.createElement("a")
+        title.setAttribute("class", "titulo")
+        title.setAttribute("href", element.enlace)
+        title.setAttribute("target", "_blank")
+        title.innerText = element.titulo;
+        card.appendChild(title)
+
+        //  Descripción
+        let description = document.createElement("p")
+        description.setAttribute("class", "descripcion");
+        description.innerText = element.descripcion;
+        card.appendChild(description)
+
+        // // SubContenedor
+        let footerOfert = document.createElement("div")
+        footerOfert.setAttribute("class", "footer-ofert")
+        card.appendChild(footerOfert);
+
+        let money = document.createElement("h4")
+        money.setAttribute("class","remuneracion")
+        money.innerText = element.remuneracion
+        footerOfert.appendChild(money)
 
         let favBtn = document.createElement("button")
         favBtn.setAttribute("class","enterBTN")
         footerOfert.appendChild(favBtn)
         favBtn.addEventListener("click", () => {
-            setFav(element)
+            alert("Inicia sesión para guardar en favoritos")
+            getLogin()
         })        
         let star = document.createElement("img")
-        star.setAttribute("src", "img/estrella.svg")
+        star.setAttribute("src", "img/estrellaKo.svg")
         star.setAttribute("class","estrella")
         favBtn.appendChild(star)
+
 }
+
+// ---------------------------------SAVE FAV
 
 function setFav(favInfo) {
     fetch(`http://localhost:8080/newFav`, {
@@ -137,6 +217,32 @@ function setFav(favInfo) {
         },
         method: 'POST',
         body: JSON.stringify({titulo: favInfo.titulo, descripcion: favInfo.descripcion, remuneracion: favInfo.remuneracion, enlace: favInfo.enlace})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status == 200){
+            alert(data.msg)
+        }
+        if (data.status == 400){
+            alert(data.msg)
+        }
+        if (data.status == 500){
+            alert(data.msg)
+        }
+    })
+    .catch(err => console.log("Internal server error. Sorry :(", err))
+}
+
+// ---------------------------------DELETE FAVS
+
+function deleteFav(favId) {
+    fetch("http://localhost:8080/deleteFav", {
+        method: 'DELETE',
+        body: JSON.stringify( { elem: favId } ),
+        headers: {
+            'Content-Type': "application/json",
+            'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
+        }
     })
     .then(res => res.json())
     .then(data => {
