@@ -40,7 +40,7 @@ function generateThief(){
     let div = document.createElement("div")
     div.setAttribute("class", "thiefSpiner")
     div.setAttribute("id", "spiner")
-
+    
     let thief = document.createElement("img")
     thief.setAttribute("src", "img/thief.png")
     thief.setAttribute("id", "thief")
@@ -48,14 +48,35 @@ function generateThief(){
     document.querySelector('.welcome').appendChild(div)
 }
 
-function remover(){
+// ------------------------------------REMOVE
+
+function removeThief(){
     document.querySelector('#spiner').remove()
+}
+
+function removeContainer(){
+    if (document.querySelector('#father').querySelectorAll('*')[0]){
+        document.querySelector('#father').querySelectorAll('*').forEach(n=>n.remove())
+    }
 }
 
 // ---------------------------------SEARCH FETCH
 
+INPUT.addEventListener("keypress", (e) => {
+    if (e.key === 'Enter') {
+        removeContainer()
+        generateThief()
+        search()
+    }
+})
+
 SEARCHbtn.addEventListener("click", () => {
+    removeContainer()
     generateThief()
+    search()    
+})
+
+function search(){
     if ( sessionStorage.getItem('token') ){
         fetch(`http://localhost:8080/search/${INPUT.value}`, {
             headers: {
@@ -65,7 +86,7 @@ SEARCHbtn.addEventListener("click", () => {
         })
         .then(res => res.json())
         .then(data => {
-            remover()
+            removeThief()
             if (data.status == 200){
                 data.data.map(el => printDataLogged(el))
             }
@@ -85,7 +106,7 @@ SEARCHbtn.addEventListener("click", () => {
         })
         .then(res => res.json())
         .then(data => {
-            remover()
+            removeThief()
             if (data.status == 200){
                 data.data.map(el => printDataAnon(el))
             }
@@ -99,7 +120,7 @@ SEARCHbtn.addEventListener("click", () => {
         .catch(err => console.log("Internal server error. Sorry :(", err))
 
     }
-})
+}
 
 function printDataLogged(element) {
         // Creación de tarjeta en la que se almacenará cada oferta.
