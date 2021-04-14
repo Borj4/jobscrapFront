@@ -34,6 +34,33 @@ function goToFavs() {
     .catch(err => console.log("Internal server error. Sorry :(", err))
 }
 
+// ------------------------------------------LOGOUT
+
+document.querySelector("#logoutBtn")
+    .addEventListener("click", () => logout() )
+    
+function logout() {
+    fetch("http://localhost:8080/logout", {
+        method: 'PUT',
+        headers: {
+            'authorization': `Bearer: ${sessionStorage.getItem('token')}`
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status == 200){
+            alert(data.msg)
+            sessionStorage.removeItem('token')
+            setTimeout(window.location.href = data.url, 1500)
+        }
+        if (data.status == 500){
+            alert(data.msg)
+            setTimeout(window.location.href = data.url, 1500)
+        }
+    })
+    .catch(err => console.log("Internal server error. Sorry :(", err))
+}
+
 // ------------------------------------THIEF
 
 function generateThief(){
