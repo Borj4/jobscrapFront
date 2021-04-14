@@ -39,7 +39,8 @@ showFavs()
 
 function saludar(nombre = usuarie){
     let saludo = document.createElement("h2")
-    saludo.innerText = `¡Hola, ${nombre}! Estás en tu área personal`
+    saludo.setAttribute("class", "saludo")
+    saludo.innerText = `¡Hola, ${nombre}! Estás en tu área personal.`
     document.querySelector('.welcome').appendChild(saludo)
 }
 
