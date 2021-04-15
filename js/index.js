@@ -40,7 +40,7 @@ document.querySelector("#logoutBtn")
     .addEventListener("click", () => logout() )
     
 function logout() {
-    fetch("https://web-work.herokuapp.com/logout", {
+    fetch("https://glacial-woodland-30782.herokuapp.com/logout", {
         method: 'PUT',
         headers: {
             'authorization': `Bearer: ${sessionStorage.getItem('token')}`
@@ -105,7 +105,7 @@ SEARCHbtn.addEventListener("click", () => {
 
 function search(){
     if ( sessionStorage.getItem('token') ){
-        fetch(`https://web-work.herokuapp.com/search/${INPUT.value}`, {
+        fetch(`https://glacial-woodland-30782.herokuapp.com/search/${INPUT.value}`, {
             headers: {
                 'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -126,7 +126,7 @@ function search(){
         })
         .catch(err => console.log("Internal server error. Sorry :(", err))
     } else {
-        fetch(`https://web-work.herokuapp.com/search/${INPUT.value}`, {
+        fetch(`https://glacial-woodland-30782.herokuapp.com/search/${INPUT.value}`, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -258,7 +258,7 @@ function printDataAnon(element) {
 // ---------------------------------SAVE FAV
 
 function setFav(favInfo) {
-    fetch(`https://web-work.herokuapp.com/newFav`, {
+    fetch(`https://glacial-woodland-30782.herokuapp.com/newFav`, {
         headers: {
             'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json'
@@ -284,7 +284,7 @@ function setFav(favInfo) {
 // ---------------------------------DELETE FAVS
 
 function deleteFav(favId) {
-    fetch("https://web-work.herokuapp.com/deleteFav", {
+    fetch("https://glacial-woodland-30782.herokuapp.com/deleteFav", {
         method: 'DELETE',
         body: JSON.stringify( { elem: favId } ),
         headers: {
