@@ -111,11 +111,11 @@ h2{
     font-size: 1.6rem;
     color: #476EB4;
     margin-top: 90px;
-    text-align: center;
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 25px;
     line-height: 1.7rem;
-    /* margin-top: 150px; */
+    text-align: center;
 }
 .searcher{
     background-color: rgb(240 240 240);
@@ -396,8 +396,6 @@ div.notBtn{
         width: 43vw;
     }
 }
-
-
 
 
 /* ----------------------------BREAKPOINTS CON TAMAÑOS ABSOLUTOS */
