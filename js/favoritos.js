@@ -12,7 +12,7 @@ function goSearch() {
 // ---------------------------------SHOW FAVS
 
 function showFavs () {
-    fetch("http://localhost:8080/showFavs", {
+    fetch("https://web-work.herokuapp.com/showFavs", {
         headers: {
             'authorization': `Bearer: ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ function printData(element) {
 // ---------------------------------DELETE FAVS
 
 function deleteFav(favId) {
-    fetch("http://localhost:8080/deleteFav", {
+    fetch("https://web-work.herokuapp.com/deleteFav", {
         method: 'DELETE',
         body: JSON.stringify( { elem: favId } ),
         headers: {
@@ -117,7 +117,7 @@ document.querySelector("#logoutBtn")
     .addEventListener("click", () => logout() )
     
 function logout() {
-    fetch("http://localhost:8080/logout", {
+    fetch("https://web-work.herokuapp.com/logout", {
         method: 'PUT',
         headers: {
             'authorization': `Bearer: ${sessionStorage.getItem('token')}`

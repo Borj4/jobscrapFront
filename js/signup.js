@@ -19,7 +19,7 @@ document.querySelector("#signUpBtn")
     .addEventListener("click", () => signUp() )
     
 function signUp() {
-    fetch("http://localhost:8080/signup", {
+    fetch("https://web-work.herokuapp.com/signup", {
         method: 'POST',
         body: JSON.stringify( {nombre: INPUTname.value, email: INPUTmail.value, pass: INPUTpass.value} ),
         headers: {
