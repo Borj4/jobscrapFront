@@ -30,7 +30,7 @@ document.querySelector("#loginBtn")
     .addEventListener("click", () => login() )
     
 function login() {
-    fetch("http://localhost:8080/login", {
+    fetch("https://glacial-woodland-30782.herokuapp.com/login", {
         method: 'POST',
         body: JSON.stringify( {email: INPUTmail.value, pass: INPUTpass.value} ),
         headers: {

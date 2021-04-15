@@ -4,7 +4,7 @@ const Url = new URLSearchParams(window.location.search)
 const token = Url.get('tok')
 
 function reestablecer(){
-    fetch(`http://localhost:8080/reestablecer/${token}`, {
+    fetch(`https://glacial-woodland-30782.herokuapp.com/reestablecer/${token}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function printDynamics (mail, id, nombre = usuario, secret){
 // ---------------------------------------------NEW PASS 
     
 function resetPass(pass, mail, id, secret) {
-fetch("http://localhost:8080/newPass", {
+fetch("https://glacial-woodland-30782.herokuapp.com/newPass", {
         method: 'PUT',
         body: JSON.stringify( {pass: pass, email: mail, id: id, secret: secret} ),
         headers: {
