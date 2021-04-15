@@ -315,7 +315,8 @@ div.notBtn{
     }
     .image{
         margin: 2% 3% 0px -39px;
-        width: 50%;
+        /* width: 382px; */
+        width: 50vw;
     }
     .container{
         margin-top: -10px;
@@ -340,6 +341,19 @@ div.notBtn{
     }
 }
 
+@media screen and (min-width: 800px) {
+    .image{
+        /* width: 395px; */
+        width: 48vw;
+    }
+}
+
+/* @media screen and (min-width: 850px) {
+    .image{
+        width: 415px;
+    }
+} */
+
 @media screen and (min-width: 900px) {
     h2{
         font-size: 1.7rem;
@@ -347,6 +361,9 @@ div.notBtn{
         line-height: 2.0rem;
         z-index: 10;
     }
+    /* .image{
+        width: 430px;
+    } */
     .searcher{
         margin: -28% 0% 5% -44%;
         width: 38%
@@ -355,17 +372,69 @@ div.notBtn{
         margin-top: 10px;
     }
 }
+
+/* @media screen and (min-width: 930px) {
+    .image{
+        width: 445px;
+    }
+} */
+/* 
+@media screen and (min-width: 960px) {
+    .image{
+        width: 465px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .image{
+        width: 480px;
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    .image{
+        width: 500px;
+    }
+} */
+
 @media screen and (min-width: 1100px) {
     h2{
         font-size: 1.9rem;
         margin: -9% 7% 0% 4%;
         line-height: 2.2rem;
     }
+    /* .image{
+        width: 525px;
+    } */
     .searcher{
         margin: -28% 0% 6% -51%;
         width: 36%;
     }
     .thiefSpiner{
         margin: 115px 0px 0 0;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    /* .image{
+        width: 552px;
+    } */
+}
+
+@media screen and (min-width: 1250px) {
+    .image{
+        width: 47vw;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .image{
+        width: 44vw;
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    .image{
+        width: 43vw;
     }
 }
