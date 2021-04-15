@@ -1,7 +1,6 @@
 // -------------------------PAQUETES E IMPORTACIONES
 
 const express = require('express');
-const ENDPOINTS = require('./src/routes/endpoints')
 
 // -------------------------------SERVIDOR Y PUERTOS
 
